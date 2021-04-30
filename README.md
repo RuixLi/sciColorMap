@@ -1,8 +1,8 @@
-### SciColorMaps
+# SciColorMaps
 
 This is an enhanced MATLAB colormap package contains 60 colormaps optimized for scientific data visualization
 
-### Gallary
+## Gallary
 
 ![white background gallary](_cmgallary_W.png)
 
@@ -18,9 +18,9 @@ These colormaps are obtained from:
 
 3. [Scientific Colour Map 6.0](http://www.fabiocrameri.ch/colourmaps.php)
 
-Contact Ruix. Li for any questions
+Contact to auther for any copyright conflits.
 
-### How to use
+## How to use
 
 Add the folder to MATLAB path and call the name of each colormap exactly the same way as MATLAB built-in colormap, e.g.:
 
@@ -30,11 +30,12 @@ Add the folder to MATLAB path and call the name of each colormap exactly the sam
 
 `cm = viridis(128);`
 
-### Guideline to choose the right color map (adapt from reference)
+## Guideline to choose the right color map (adapt from reference)
 
 ![guide line](_ColormapGuideline.png)
 
 recommand to use the perceptial uniform optimized color maps for better visual accessibility
 
-### reference
+## reference
+
 Crameri, Fabio, Grace E. Shephard, and Philip J. Heron. "The misuse of colour in science communication." Nature communications 11.1 (2020): 1-10.
