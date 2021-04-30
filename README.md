@@ -4,11 +4,11 @@ This is an enhanced MATLAB colormap package contains 60 colormaps optimized for 
 
 ### Gallary
 
-![white background gallary](_cmgallary_W.jpg)
+![white background gallary](_cmgallary_W.png)
 
-![black background gallary](_cmgallary_K.jpg)
+![black background gallary](_cmgallary_K.png)
 
-![gray scaled](_cmgallary_G.jpg)
+![gray scaled](_cmgallary_G.png)
 
 These colormaps are obtained from:
 
@@ -30,7 +30,8 @@ Add the folder to MATLAB path and call the name of each colormap exactly the sam
 
 `cm = viridis(128);`
 
-### Guideline to choose the right color map
+### Guideline to choose the right color map (adapt from reference)
+
 ![guide line](_ColormapGuideline.png)
 
 recommand to use the perceptial uniform optimized color maps for better visual accessibility
