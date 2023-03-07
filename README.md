@@ -18,7 +18,7 @@ These colormaps are obtained from:
 
 3. [Scientific Colour Map 6.0](http://www.fabiocrameri.ch/colourmaps.php)
 
-Contact to auther for any copyright conflits.
+Contact me for any copyright conflits.
 
 ## How to use
 
