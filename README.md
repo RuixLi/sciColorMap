@@ -1,15 +1,13 @@
 # SciColorMaps
 
-This is an enhanced MATLAB colormap package contains 60 colormaps optimized for scientific data visualization
+This is an enhanced MATLAB colormap package contains more than 60 colormaps optimized for scientific data visualization
 
-## Gallary
+## Gallery
 
-![white background gallary](_cmgallary_W.png)
+use `show_gallery.m` to show all color maps with name
+use `show_cm(name)` to show a specific color map
 
-![black background gallary](_cmgallary_K.png)
-
-![gray scaled](_cmgallary_G.png)
-
+## Source
 These colormaps are obtained from:
 
 1. [Matplotlib](https://matplotlib.org/3.3.3/tutorials/colors/colormaps.html)
@@ -22,7 +20,7 @@ Contact me for any copyright conflits.
 
 ## How to use
 
-Add the folder to MATLAB path and call the name of each colormap exactly the same way as MATLAB built-in colormap, e.g.:
+Add the folder to MATLAB path and call the name of each colormap *exactly the same way* as MATLAB built-in colormap, e.g.:
 
 `colormap(viridis)`
 

@@ -1,7 +1,7 @@
-function map = twilight2(m)
-%   TWILIGHT2 a colour map adopted from matplotlib
-%   twilight2(M) returns an M-by-3 matrix containing a colormap.
-%   twilight2 is phase shifted twilight
+function map = dawn(m)
+%   DAWN a colour map adopted from matplotlib
+%   dawn(M) returns an M-by-3 matrix containing a colormap.
+%   dawn is phase shifted twilight
 %   written by Ruix.Li in Jan, 2021
 
 % USAGE:
