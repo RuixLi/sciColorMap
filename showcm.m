@@ -1,4 +1,4 @@
-function show_cm(cmname)
+function showcm(cmname)
 % plot a colorbar for each colormap in this folder
   
 % plot the colorbar

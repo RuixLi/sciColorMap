@@ -1,4 +1,4 @@
-function show_gallery
+function showgallery
 % plot a colorbar for each colormap in this folder
 %
 
