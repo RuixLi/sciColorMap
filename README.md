@@ -36,7 +36,7 @@ Contact me for any copyright conflits.
 
 ## Guideline to choose the right color map (adapt from reference)
 
-![guide line](_ColormapGuideline.png)
+![guide line](_colormap_guideline.png)
 
 recommand to use the perceptial uniform optimized color maps for better visual accessibility
 
