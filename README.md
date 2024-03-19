@@ -20,13 +20,19 @@ Contact me for any copyright conflits.
 
 ## How to use
 
-Add the folder to MATLAB path and call the name of each colormap *exactly the same way* as MATLAB built-in colormap, e.g.:
+1. Add the folder to MATLAB path and call the name of each colormap *exactly the same way* as MATLAB built-in colormap, e.g.:
 
 `colormap(viridis)`
 
 `colormap viridis`
 
 `cm = viridis(128);`
+
+
+2. Use `show_gallery.m` to show all color maps with name
+
+3. Use `show_cm(name)` to show a specific color map
+
 
 ## Guideline to choose the right color map (adapt from reference)
 
