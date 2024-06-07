@@ -2,6 +2,7 @@ function map = cmmatter(m)
 %   CMMATTER colormap from cmocean by Thyng, K. M et al.
 %   matter(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(cmmatter(128))
@@ -275,5 +276,6 @@ values = [
 1.851717128353368158e-01 5.913348735199071976e-02 2.430426744218359136e-01
    ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

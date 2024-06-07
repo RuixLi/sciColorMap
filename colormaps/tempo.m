@@ -2,6 +2,7 @@ function map = tempo(m)
 %   TEMPO colormap from cmocean by Thyng, K. M et al.
 %   tempo(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(tempo(128))
@@ -275,5 +276,6 @@ values = [
 8.225559928700268419e-02 1.149244079727295142e-01 2.647901677800857390e-01
 ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

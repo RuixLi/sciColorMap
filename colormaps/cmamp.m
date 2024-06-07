@@ -2,6 +2,7 @@ function map = cmamp(m)
 %   CMAMP colormap from cmocean by Thyng, K. M et al.
 %   cmamp(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(cmamp(128))
@@ -275,5 +276,6 @@ values = [
 2.360563646646140490e-01 3.529747994604028744e-02 6.943744239412558139e-02
 ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

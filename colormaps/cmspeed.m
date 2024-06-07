@@ -2,6 +2,7 @@ function map = cmspeed(m)
 %   CMSPEED colormap from cmocean by Thyng, K. M et al.
 %   cmspeed(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(cmspeed(128))
@@ -275,5 +276,6 @@ values = [
 9.053276383981978537e-02 1.373386075843833487e-01 7.325761429945673586e-02
 ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

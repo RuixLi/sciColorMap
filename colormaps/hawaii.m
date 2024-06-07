@@ -2,6 +2,7 @@ function map = hawaii(m)
 %   HAWAII a scientific colour map 6 by FabioCrameri et al.
 %   hawaii(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(hawaii(128))
@@ -275,5 +276,6 @@ values = [
    0.703778749232290   0.948976597456455   0.993774980782306
    ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

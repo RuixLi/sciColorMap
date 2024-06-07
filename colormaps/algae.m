@@ -2,6 +2,7 @@ function map = algae(m)
 %   ALGAE colormap from cmocean by Thyng, K. M et al.
 %   matter(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(algae(128))
@@ -275,5 +276,6 @@ values = [
 6.885643403782271132e-02 1.420894601159049808e-01 7.903362825094448207e-02
    ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

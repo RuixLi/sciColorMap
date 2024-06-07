@@ -2,6 +2,7 @@ function map = roma(m)
 %   ROMA a scientific colour map 6 by FabioCrameri et al.
 %   roma(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(roma(128))
@@ -275,5 +276,6 @@ values = [
    0.103698839573685   0.200062791896449   0.599991823713243
    ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

@@ -2,6 +2,7 @@ function map = cmrain(m)
 %   CMRAIN colormap from cmocean by Thyng, K. M et al.
 %   cmrain(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(cmrain(128))
@@ -275,5 +276,6 @@ values = [
 1.315721561940036699e-01 1.040055590640546201e-01 2.213363669373892839e-01
 ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

@@ -1,11 +1,11 @@
-function showgallery
+function show_gallery
 % plot a colorbar for each colormap in this folder
 %
 
 % get the list of colormaps
 cmglist = dir(fullfile(fileparts(mfilename('fullpath')),'colormaps'));
 
-cmglist = {cmglist(3:end).name};
+cmglist = {cmglist(4:end).name};
 
 % get the number of colormaps
 ncmg = length(cmglist);

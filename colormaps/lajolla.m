@@ -2,6 +2,7 @@ function map = lajolla(m)
 %   LAJOLLA a scientific colour map 6 by FabioCrameri et al.
 %   lajolla(M) returns an M-by-3 matrix containing a colormap. 
 %   written by Ruix.Li in Jan, 2021
+%   updated by Ruix.Li in Jul, 2024
 
 % USAGE:
 % colormap(lajolla(128))
@@ -275,5 +276,6 @@ values = [
    0.100226644246888   0.100908457190777   0.003791345409753
    ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

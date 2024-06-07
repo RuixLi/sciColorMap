@@ -275,5 +275,6 @@ values = [
    0.300376364621568   0.001864890181019   0.005395009309447
    ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');

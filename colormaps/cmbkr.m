@@ -110,5 +110,6 @@ values =[
     0 0.82 1;
     ];
 
+values = flipud(values);
 P = size(values,1);
 map = interp1(1:size(values,1), values, linspace(1,P,m), 'linear');
