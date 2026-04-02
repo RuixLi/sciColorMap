@@ -1,6 +1,6 @@
 # sciColorMap
 
-> 🎨 Scientific colormaps for MATLAB — **67 perceptually uniform colormaps** optimized for data visualization
+> 🎨 A collection of scientific colormaps for MATLAB — **67 perceptually uniform colormaps** optimized for data visualization
 
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2016b%2B-orange.svg)](https://www.mathworks.com/products/matlab.html)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -26,7 +26,7 @@ cm = magma(256);
 
 ## 🎨 Gallery
 
-![Colormap Gallery](docs/images/gallery.png)
+![Colormap Gallery](docs/images/_gallery.png)
 
 **View all colormaps:**
 ```matlab
@@ -65,13 +65,6 @@ addpath(genpath('/path/to/sciColorMap'))
 1. Download or clone this repository
 2. In MATLAB, navigate to the folder
 3. Right-click on `sciColorMap` folder → **Add to Path** → **Selected Folders and Subfolders**
-
-### Option 3: Temporary Use
-```matlab
-% Add for current session only
-cd /path/to/sciColorMap
-addpath(genpath(pwd))
-```
 
 ---
 
@@ -123,32 +116,7 @@ colormap(davos(512))    % 512 colors
 
 ---
 
-## 📚 Available Colormaps
-
-### Sequential (Continuous data, single hue progression)
-`acton`, `bamako`, `batlow`, `bilbao`, `davos`, `devon`, `grayC`, `hawaii`, `imola`, `lajolla`, `lapaz`, `lisbon`, `nuuk`, `oslo`, `tokyo`, `turku`, `buda`, `inferno`, `magma`, `plasma`, `viridis`, `cividis`
-
-### Sequential (Multi-hue)
-`algae`, `haline`, `tempo`, `turbid`, `dense`, `deep`, `ice`, `matter`, `thermal`, `speed`, `amp`, `solar`, `tarn`, `tofino`, `turbo`
-
-### Diverging (Data with critical midpoint)
-`balance`, `berlin`, `broc`, `cork`, `lisbon`, `roma`, `tofino`, `vik`, `coolwarm`, `seismic`, `bwr`, `bkr`, `delta`, `diff`
-
-### Cyclic (Periodic data: angles, phases)
-`bamako`, `broc`, `cork`, `roma`, `twilight`, `romaO`, `brocO`, `corkO`, `vikO`
-
-### Special Purpose
-`rainbow` (use with caution!), `phase`, `curl`, `oleron`
-
-**🔍 Browse all previews:** [`docs/colormap_previews/`](docs/colormap_previews/)
-
----
-
 ## 🎯 Choosing the Right Colormap
-
-![Colormap Selection Guide](docs/images/guideline.png)
-
-### Quick Decision Guide
 
 | Data Type | Recommended Colormaps | Use Case |
 |-----------|----------------------|----------|
@@ -172,37 +140,12 @@ colormap(davos(512))    % 512 colors
 - **[Examples](examples/)** — Demo scripts and utility functions
   - `show_gallery.m` — Display all available colormaps
   - `show_cm.m` — Display a specific colormap
-  - `demo_usage.m` — Comprehensive usage examples
+
 - **[Colormap Previews](docs/colormap_previews/)** — Individual colormap images
 
----
+**Enjoy better scientific visualization! 🎨📊**
 
-## 🤝 Contributing & Citation
-
-### Academic Citation
-If you use sciColorMap in academic work, please cite the original colormap sources (see References below).
-
-For this package specifically:
-```bibtex
-@software{sciColorMap,
-  author = {Li, Ruix},
-  title = {sciColorMap: Scientific Colormaps for MATLAB},
-  year = {2021},
-  url = {https://github.com/yourusername/sciColorMap}
-}
-```
-
-See [`CITATION.cff`](CITATION.cff) for structured citation metadata.
-
-### Contributing
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
----
-
-## 📄 License & References
-
-### License
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
+## References
 
 ### Colormap Sources & Credits
 
@@ -216,24 +159,4 @@ This package aggregates colormaps from multiple sources:
 
 4. **[Color Map Advice for Scientific Visualization (Kenneth Moreland)](https://www.kennethmoreland.com/color-advice/)** — `coolwarm`, `kindlmann`, and diverging colormap theory
 
-### Key References
-
-1. **Crameri, F., Shephard, G.E. & Heron, P.J.** (2020). *The misuse of colour in science communication.* Nature Communications, 11(1), 1-10. [DOI: 10.1038/s41467-020-19160-7](https://doi.org/10.1038/s41467-020-19160-7)
-
-2. **Moreland, K.** (2016). *Why We Use Bad Color Maps and What You Can Do About It.* Electronic Imaging, 2016(16), 1-6.
-
-3. **Kindlmann, G., Reinhard, E., & Creem, S.** (2002). *Face-based luminance matching for perceptual colormap generation.* IEEE Visualization 2002, 299-306.
-
-4. **Thyng, K.M., Greene, C.A., Hetland, R.D., Zimmerle, H.M., & DiMarco, S.F.** (2016). *True colors of oceanography: Guidelines for effective and accurate colormap selection.* Oceanography, 29(3), 9-13.
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to the creators of the original colormaps: Stéfan van der Walt, Nathaniel Smith (Matplotlib), Fabio Crameri (Scientific Colour Maps), Kenneth Moreland (Diverging Color Maps), and Kristen Thyng (cmocean).
-
----
-
-**Questions or Issues?** Please open an issue on the repository or contact the maintainer.
-
-**Enjoy better scientific visualization! 🎨📊**
+5. Crameri, Fabio, Grace E. Shephard, and Philip J. Heron. **The misuse of colour in science communication.** Nature communications 11.1 (2020): 1-10.
