@@ -1,6 +1,6 @@
 # sciColorMap
 
-> 🎨 A collection of scientific colormaps for MATLAB — **67 perceptually uniform colormaps** optimized for data visualization
+> 🎨 A collection of scientific colormaps for MATLAB — **67 fine-tuned colormaps** optimized for data visualization
 
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2016b%2B-orange.svg)](https://www.mathworks.com/products/matlab.html)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
