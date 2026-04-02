@@ -1,5 +1,30 @@
-
+# macOS
 .DS_Store
+
+# Microsoft Office
 *.pdf
 *.pptx
+
+# Adobe files
 *.ai
+
+# MATLAB
+*.asv
+*.m~
+slprj/
+*.autosave
+*.mex*
+*.p
+
+# MATLAB session files
+octave-workspace
+
+# Build outputs
+*.dmb
+*.lst
+
+# Compiled files
+*.dll
+*.exe
+*.o
+*.so
