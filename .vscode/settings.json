@@ -1,6 +1,0 @@
-{
-    "chat.tools.terminal.autoApprove": {
-        "New-Item": true,
-        "Move-Item": true
-    }
-}
