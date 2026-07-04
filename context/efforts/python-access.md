@@ -1,10 +1,10 @@
 ---
 kind: effort
 name: python access
-status: active
+status: done
 description: "Export the colormap catalog to neutral per-map CSVs and provide a small Python loader so the maps work in matplotlib/seaborn."
 created: "2026-07-04T13:30"
-updated: "2026-07-04T13:30"
+updated: "2026-07-04T14:15"
 ---
 # python access - effort
 
@@ -70,4 +70,4 @@ The internal file layout and the ordered, tests-first task route live in the pla
 
 ## Seal
 
-- Not yet sealed - pending implementation and the oracle passing. On pass, record the validated commit here (`validation-model`).
+- **Sealed 2026-07-04** on branch `python-access`. Ground: `tests/test_export_data.m` (all 67 CSVs match `feval(name,256)`, AbsTol 1e-6) and `tests/test_scicolormap.py` (7/7) both pass — MATLAB R2025a, Python 3.11.7 / numpy 1.26.4 / matplotlib 3.8.0. Realized by [plan](../plans/20260704-python-access.md); outcome in [report](../reports/20260704-python-access.md).

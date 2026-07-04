@@ -40,7 +40,7 @@ the files it points to.
 
 ## Current work
 
-- Where things stand: **[context/jobs.md](context/jobs.md)** — the worklist. Active: **python access**; last shipped: the colormap editor.
+- Where things stand: **[context/jobs.md](context/jobs.md)** — the worklist. No active effort; Goals 1 (framework adoption) and 2 (colormap editor + Python access) are shipped.
 
 > The [jobs board](context/jobs.md) is the current-work surface; this section only points to it (`tracking-progress`).
 
