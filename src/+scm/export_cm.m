@@ -1,8 +1,8 @@
-function export_data(outdir)
-%EXPORT_DATA  Write each catalog colormap to a 256x3 CSV.
-%   scm.export_data() writes colormaps/<name>.csv for every colormaps/<name>.m
+function export_cm(outdir)
+%EXPORT_CM  Write each catalog colormap to a 256x3 CSV.
+%   scm.export_cm() writes colormaps/<name>.csv for every colormaps/<name>.m
 %   using feval(name, 256). Re-run whenever a colormap .m changes.
-%   scm.export_data(OUTDIR) writes to OUTDIR instead of colormaps/.
+%   scm.export_cm(OUTDIR) writes to OUTDIR instead of colormaps/.
     here  = fileparts(mfilename('fullpath'));   % <root>/src/+scm
     root  = fileparts(fileparts(here));         % <root>
     cmdir = fullfile(root, 'colormaps');

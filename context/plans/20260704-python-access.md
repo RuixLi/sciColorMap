@@ -13,7 +13,7 @@ updated: "2026-07-04T14:00"
 
 **Goal:** Make the colormap catalog usable from Python (matplotlib/seaborn) via neutral per-map CSVs + a small loader — data + snippet, no package.
 
-**Architecture:** A MATLAB exporter `scm.export_data` evaluates each `colormaps/<name>.m` at 256 rows and writes `colormaps/<name>.csv`. A Python module `src/scm.py` reads those CSVs and exposes `load` / `cmap` / `list_cm`. Two oracles: a MATLAB drift test (CSV ≈ `feval(name,256)`) and a Python loader test.
+**Architecture:** A MATLAB exporter `scm.export_cm` evaluates each `colormaps/<name>.m` at 256 rows and writes `colormaps/<name>.csv`. A Python module `src/scm.py` reads those CSVs and exposes `load` / `cmap` / `list_cm`. Two oracles: a MATLAB drift test (CSV ≈ `feval(name,256)`) and a Python loader test.
 
 **Tech Stack:** MATLAB (`feval`, `writematrix`/`readmatrix`); Python 3 with `numpy` (loader) and `matplotlib` (only for `cmap`). Python tests use `pytest`.
 
@@ -40,8 +40,8 @@ updated: "2026-07-04T14:00"
 
 ## Architecture (files)
 
-- Create `src/+scm/export_data.m` — MATLAB exporter (`scm.export_data`).
-- Generate `colormaps/<name>.csv` × 67 — by running `scm.export_data` (committed as data).
+- Create `src/+scm/export_cm.m` — MATLAB exporter (`scm.export_cm`).
+- Generate `colormaps/<name>.csv` × 67 — by running `scm.export_cm` (committed as data).
 - Create `src/scm.py` — Python loader (`load`, `cmap`, `list_cm`).
 - Create `tests/test_export_data.m` — MATLAB drift oracle.
 - Create `tests/test_scicolormap.py` — Python loader oracle.
@@ -54,11 +54,11 @@ updated: "2026-07-04T14:00"
 
 ---
 
-## Task 1: MATLAB exporter `scm.export_data` + generate the CSVs
+## Task 1: MATLAB exporter `scm.export_cm` + generate the CSVs
 
 **Files:**
 - Create: `tests/test_export_data.m`
-- Create: `src/+scm/export_data.m`
+- Create: `src/+scm/export_cm.m`
 - Generate: `colormaps/*.csv`
 
 - [ ] **Step 1: Write the failing drift test**
@@ -66,7 +66,7 @@ updated: "2026-07-04T14:00"
 `tests/test_export_data.m`:
 ```matlab
 function tests = test_export_data
-%TEST_EXPORT_DATA  Each committed colormaps/<name>.csv matches feval(name,256).
+%TEST_EXPORT_CM  Each committed colormaps/<name>.csv matches feval(name,256).
 tests = functiontests(localfunctions);
 end
 
@@ -84,7 +84,7 @@ verifyNotEmpty(tc, names);
 for i = 1:numel(names)
     csv = fullfile(cmdir, [names{i} '.csv']);
     verifyTrue(tc, isfile(csv), ...
-        sprintf('missing %s.csv — run scm.export_data', names{i}));
+        sprintf('missing %s.csv — run scm.export_cm', names{i}));
     M = feval(names{i}, 256);
     C = readmatrix(csv);
     verifyEqual(tc, C, M, 'AbsTol', 1e-6, ...
@@ -96,17 +96,17 @@ end
 - [ ] **Step 2: Run it — verify it fails**
 
 Run: `matlab -batch "cd('d:/code/sciColorMap'); runtests('tests/test_export_data.m')"`
-Expected: FAIL — `scm.export_data` doesn't exist yet and no `.csv` files, so `isfile` assertions fail.
+Expected: FAIL — `scm.export_cm` doesn't exist yet and no `.csv` files, so `isfile` assertions fail.
 
 - [ ] **Step 3: Write the exporter**
 
-`src/+scm/export_data.m`:
+`src/+scm/export_cm.m`:
 ```matlab
-function export_data(outdir)
-%EXPORT_DATA  Write each catalog colormap to a 256x3 CSV.
-%   scm.export_data() writes colormaps/<name>.csv for every colormaps/<name>.m
+function export_cm(outdir)
+%EXPORT_CM  Write each catalog colormap to a 256x3 CSV.
+%   scm.export_cm() writes colormaps/<name>.csv for every colormaps/<name>.m
 %   using feval(name, 256). Re-run whenever a colormap .m changes.
-%   scm.export_data(OUTDIR) writes to OUTDIR instead of colormaps/.
+%   scm.export_cm(OUTDIR) writes to OUTDIR instead of colormaps/.
     here  = fileparts(mfilename('fullpath'));   % <root>/src/+scm
     root  = fileparts(fileparts(here));         % <root>
     cmdir = fullfile(root, 'colormaps');
@@ -125,7 +125,7 @@ end
 
 - [ ] **Step 4: Generate the CSVs**
 
-Run: `matlab -batch "cd('d:/code/sciColorMap'); addpath(genpath(pwd)); scm.export_data"`
+Run: `matlab -batch "cd('d:/code/sciColorMap'); addpath(genpath(pwd)); scm.export_cm"`
 Expected: `exported 67 colormaps to ...colormaps` and 67 new `colormaps/*.csv`.
 
 - [ ] **Step 5: Run the drift test — verify it passes**
@@ -136,7 +136,7 @@ Expected: PASS (1 test, iterating all 67 maps).
 - [ ] **Step 6: Commit**
 
 ```bash
-git add "src/+scm/export_data.m" tests/test_export_data.m "colormaps/*.csv"
+git add "src/+scm/export_cm.m" tests/test_export_data.m "colormaps/*.csv"
 git commit -m "feat(scm): export catalog to per-map CSVs + drift test"
 ```
 
@@ -296,7 +296,7 @@ rgb = scm.load("batlow", 64)              # 64x3 numpy array
 scm.list_cm()                             # available names
 ```
 Requires `numpy` (and `matplotlib` for `scm.cmap`). Regenerate the CSVs after
-editing a colormap with `scm.export_data` in MATLAB.
+editing a colormap with `scm.export_cm` in MATLAB.
 ````
 
 - [ ] **Step 2: ENVIRONMENT — add Python deps**
@@ -309,7 +309,7 @@ In `ENVIRONMENT.md`, under Dependencies replace the Python line:
 - [ ] **Step 3: CHANGELOG — note it under `## [Unreleased]` → `### Added`**
 
 ```markdown
-- Python access: `colormaps/*.csv` exported via `scm.export_data`, loaded by `src/scm.py` (`scm.load` / `scm.cmap` / `scm.list_cm`) for matplotlib/seaborn.
+- Python access: `colormaps/*.csv` exported via `scm.export_cm`, loaded by `src/scm.py` (`scm.load` / `scm.cmap` / `scm.list_cm`) for matplotlib/seaborn.
 ```
 
 - [ ] **Step 4: Run the whole suite (both languages)**
