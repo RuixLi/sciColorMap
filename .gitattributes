@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# The vendored framework bundle is hash-sealed (context/conventions-bundle.json).
+# Force LF everywhere so the checksums verify on any OS, including fresh Windows
+# checkouts (where * text=auto would otherwise convert to CRLF and break the seal).
+context/** text eol=lf
