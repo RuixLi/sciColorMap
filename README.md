@@ -145,6 +145,26 @@ colormap(davos(512))    % 512 colors
 - **[Colormap Previews](docs/colormap_previews/)** — Individual colormap images
 - **[AGENTS.md](AGENTS.md)** — Project entry point for contributors and agents
 
+---
+
+## 🐍 Use in Python
+
+The catalog is exported to `colormaps/*.csv` and loaded by [`src/scm.py`](src/scm.py) — no pip package, no registration:
+
+```python
+import sys; sys.path.append("path/to/sciColorMap/src")
+import scm
+import seaborn as sns
+
+sns.heatmap(data, cmap=scm.cmap("vik"))   # a matplotlib ListedColormap
+rgb = scm.load("batlow", 64)              # 64x3 numpy array
+scm.list_cm()                             # available names
+```
+
+Requires `numpy` (and `matplotlib` for `scm.cmap`). Regenerate the CSVs after editing a colormap by running `scm.export_data` in MATLAB.
+
+---
+
 **Enjoy better scientific visualization! 🎨📊**
 
 ## References

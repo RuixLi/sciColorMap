@@ -40,14 +40,9 @@ the files it points to.
 
 ## Current work
 
-- None active. Last shipped: [colormap editor](context/efforts/colormap-editor.md) —
-  `scm.trim` / `scm.warp` / `scm.cm_editor` ([report](context/reports/20260704-colormap-editor.md)).
-- **Next:** Python access to the catalog (deferred; the neutral colormap-data
-  representation is its first question — see [ADR 0001](context/decisions/0001-catalog-at-root-and-cross-language-layout.md)).
+- Where things stand: **[context/jobs.md](context/jobs.md)** — the worklist. No active effort; Goals 1 (framework adoption) and 2 (colormap editor + Python access) are shipped.
 
-> Single-threaded for now: the current-work line lives here, not in a
-> `context/jobs.md` board. Start a board only when work runs in parallel
-> (`tracking-progress`).
+> The [jobs board](context/jobs.md) is the current-work surface; this section only points to it (`tracking-progress`).
 
 ## Where to look
 
@@ -61,6 +56,7 @@ the files it points to.
 | conventions (the guidance) | `context/conventions.md` |
 | glossary | `context/glossary.md` |
 | decisions / ADRs | `context/decisions/` |
+| where things stand | `context/jobs.md` |
 | efforts / plans / logs / reports | `context/efforts/`, `context/plans/`, `context/logs/`, `context/reports/` |
 | environment | `ENVIRONMENT.md` |
 | release history | `CHANGELOG.md` |
