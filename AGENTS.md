@@ -40,10 +40,10 @@ the files it points to.
 
 ## Current work
 
-- None active. **Next:** Goal 2 — Python access + colormap customizer. Each
-  opens as an effort under `context/efforts/` after its design is converged;
-  the Python effort's first question is the neutral colormap-data representation
-  (see [ADR 0001](context/decisions/0001-catalog-at-root-and-cross-language-layout.md)).
+- **Active:** [colormap editor](context/efforts/colormap-editor.md) — interactive
+  trim + warp tool for MATLAB (design converged; implementation planning next).
+- **Later:** Python access to the catalog (deferred; the neutral colormap-data
+  representation is its first question — see [ADR 0001](context/decisions/0001-catalog-at-root-and-cross-language-layout.md)).
 
 > Single-threaded for now: the current-work line lives here, not in a
 > `context/jobs.md` board. Start a board only when work runs in parallel

@@ -33,3 +33,6 @@ Thumbs.db
 
 # --- ephemeral local runs ---
 run/
+
+# --- superpowers brainstorm scratch (visual companion) ---
+.superpowers/
