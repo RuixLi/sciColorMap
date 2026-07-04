@@ -1,32 +1,35 @@
-.vscode/
+# Principle (where-files-live): git tracks text source; generated artifacts,
+# caches, and large binaries are ignored.
 
-# macOS
-.DS_Store
+# --- Python (planned: src/scm/) ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Microsoft Office
-*.pdf
-*.pptx
-
-# Adobe files
-*.ai
-
-# MATLAB
+# --- MATLAB ---
 *.asv
 *.m~
-slprj/
 *.autosave
 *.mex*
 *.p
-
-# MATLAB session files
+slprj/
 octave-workspace
 
-# Build outputs
-*.dmb
-*.lst
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
-# Compiled files
-*.dll
-*.exe
-*.o
-*.so
+# --- env / secrets ---
+.env
+
+# --- ephemeral local runs ---
+run/

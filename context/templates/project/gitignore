@@ -1,0 +1,36 @@
+# Copy to .gitignore at the repo root. Principle (where-files-live): git tracks text
+# source; generated artifacts, caches, and large binaries are ignored.
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- MATLAB ---
+*.asv
+*.mex*
+slprj/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- env / secrets ---
+.env
+
+# --- study: heavy/binary data synced out-of-band, not in git (see where-files-live) ---
+# Uncomment in a study repo:
+# data/
+# outputs/
+# references/
+# archive/
+# run/

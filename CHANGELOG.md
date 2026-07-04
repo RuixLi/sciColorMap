@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- Adopted the **all-you-need-is-trust** framework (v0.1.0) as a `package`: added
+  `AGENTS.md` (agent entry point), `ENVIRONMENT.md`, and a `context/` working
+  memory holding the vendored conventions (hash-sealed in
+  `context/conventions-bundle.json`). Aligned `.gitignore` to the framework template.
+- **Breaking (tools):** moved the preview tools into a MATLAB package — `show_cm`
+  and `show_gallery` now live in `src/+scm/` and are called as `scm.show_cm` /
+  `scm.show_gallery` (previously `run examples/show_gallery.m`). `show_gallery`
+  now discovers the catalog robustly (all `*.m`) instead of a fixed directory slice.
+- Recorded the catalog-at-root architecture decision in ADR 0001.
+
+### Added
+- `tests/test_colormaps.m` — smoke test that every colormap returns a valid
+  `N×3` RGB table in `[0,1]`.
+- `examples/basic_usage.m` — runnable usage demo.
+
+### Removed
+- Stray `.DS_Store` from version control.
+
 ## [2.1.0] - 2026-04-02
 
 ### Changed

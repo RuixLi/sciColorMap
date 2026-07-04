@@ -1,0 +1,149 @@
+{
+  "kind": "conventions-bundle-manifest",
+  "source": {
+    "framework": "all-you-need-is-trust",
+    "origin": "d:/code/all-you-need-is-trust",
+    "version": "0.1.0",
+    "vendored_at": "2026-07-04",
+    "note": "Hashed from the framework files as they were on vendor date. The framework's published bundle_hash was stale at vendor time (20/34 files edited after it was generated), so hashes here are recomputed from actual content. On re-align, regenerate the framework bundle first, then compare."
+  },
+  "bundle_hash": "sha256:4463380d4aac8668c0a11c83c0b3a032d9631fbac5378cc5ab56e64517feebad",
+  "files": [
+    {
+      "path": "conventions.md",
+      "hash": "sha256:e27c1730a1c6910c115a161f520a37cb93d3d1d6369f7051500b5d743d3e86a3"
+    },
+    {
+      "path": "conventions/building-context.md",
+      "hash": "sha256:474d6ce89097ef4ffacc7bab646b73b1336814031ccc3efe1c34228b794ded64"
+    },
+    {
+      "path": "conventions/how-to-work-here.md",
+      "hash": "sha256:52475a57b7bc2243b4430952d5e13ef2953b1b51d84a4554b0fa038ce4df80f0"
+    },
+    {
+      "path": "conventions/tracking-progress.md",
+      "hash": "sha256:57650bbbcb711d32b5714a213ceff5ebe37c9cbed71aa8663e67adaa50edff38"
+    },
+    {
+      "path": "conventions/where-files-live.md",
+      "hash": "sha256:0465f20b5eb1c9d909d0c0b8e9dbc8af68392e2952e4709f990beee9f1b93b7b"
+    },
+    {
+      "path": "conventions/working-with-code.md",
+      "hash": "sha256:6ff78b47d118e664d337235908aa94c129d0438456ed99529475c1be8376cff4"
+    },
+    {
+      "path": "conventions/working-with-data.md",
+      "hash": "sha256:7d2626095ee63c732124824ee6a4631e6dfd4ee38733ed340749500eee8b576f"
+    },
+    {
+      "path": "conventions/writing-for-the-user.md",
+      "hash": "sha256:30e021ddf9ec0e41dae438c3f9388e395f0d465f244308f78e546e9c504d683e"
+    },
+    {
+      "path": "references.md",
+      "hash": "sha256:ef8d4c82e6d9a2a23a8ab91d301f976152bbd6a41094fa1cceb1528719c210b4"
+    },
+    {
+      "path": "references/api-surface.md",
+      "hash": "sha256:4e951f2fdca1145c2b655b3e22a8469dc04949a35a5c7dc478a2d83a7a06cc97"
+    },
+    {
+      "path": "references/artifact-manifest.md",
+      "hash": "sha256:d75d089f043c2a1cecc61256e96b984e14f788909bf32c4778ff43d545586510"
+    },
+    {
+      "path": "references/document-frontmatter.md",
+      "hash": "sha256:7d9cb7fd19c544859d7639773ccdf84c2ba0454d05281d14b42c16be9b9b5848"
+    },
+    {
+      "path": "references/gradient-propagation-workflow.md",
+      "hash": "sha256:94c85eeb97b82507cef395e88e286be94bd8da5360a523dd6eaa616e85ea1639"
+    },
+    {
+      "path": "references/naming-and-formatting.md",
+      "hash": "sha256:fd172b79549bf5e9368af1e0dba0457a5e089ff6dd3ffc9a4bbe62f7f6bf925f"
+    },
+    {
+      "path": "references/project-layout.md",
+      "hash": "sha256:35e51429f200a93e11c112b5607d11a43b8c7d86199c06838646fd242142d9b7"
+    },
+    {
+      "path": "references/re-enterable-context.md",
+      "hash": "sha256:393d03ef28179dc79b11fa63caabe8abdd03a93f6436a408877f93b788cc478f"
+    },
+    {
+      "path": "references/tool-usage.md",
+      "hash": "sha256:cea7bc2b19ec5f59a8095d08053ebbd2851c70d1844d8bc40a5a5f9b0ce4fbc2"
+    },
+    {
+      "path": "references/tree-graph-filesystem.md",
+      "hash": "sha256:15f17998540fa8c292c0a5b369b973526c9b8e5745918d5197f13061848cbc58"
+    },
+    {
+      "path": "references/validation-model.md",
+      "hash": "sha256:5754710cd6ffae24993781b192892e3911619d368e7cba1f99479e84f0b53711"
+    },
+    {
+      "path": "references/work-documents.md",
+      "hash": "sha256:2962a9bc41623a0a4772a33aca4ca7e081b1e453ac2252031a2ad849d9c8da62"
+    },
+    {
+      "path": "templates.md",
+      "hash": "sha256:f2cb055a24297c8af115757bf8d7ce46c50780d799bc94161a4c7a33be92de0e"
+    },
+    {
+      "path": "templates/context/discussions.md",
+      "hash": "sha256:092adf85f752b15291ea4def3e930e098e0a1530c3adb8532e2992bf688fb404"
+    },
+    {
+      "path": "templates/context/effort.md",
+      "hash": "sha256:db684b3386103801f523c64b72ff3e9bc49b165c6fe4e15dcbe1b1c06d2d5396"
+    },
+    {
+      "path": "templates/context/jobs.md",
+      "hash": "sha256:34cbddc373fed6124cc781eb33375d551cbf5d81a3b58ec1bd65f272f0e7486d"
+    },
+    {
+      "path": "templates/context/log.md",
+      "hash": "sha256:0cabca0f8d899ba77c1ace623517fa4c559021ca1fdf025130a10778a9473de6"
+    },
+    {
+      "path": "templates/context/plan.md",
+      "hash": "sha256:8453ce589ca8d2252578bdf762eb632e8bb13ecb9505d18c990b4e9b88d086c0"
+    },
+    {
+      "path": "templates/context/report.md",
+      "hash": "sha256:c1186732874d68604dbfca823dfdaef95aa8d9acb2251d6e7cc6c8fc43f9ef6e"
+    },
+    {
+      "path": "templates/context/scheme.md",
+      "hash": "sha256:28b2b59d773e72c401963fef1930f842dcb1ca9efa231308fdd12c5a5a4c4c83"
+    },
+    {
+      "path": "templates/project/AGENTS.md",
+      "hash": "sha256:bc155240bc6c790de27ef1e041ce283f7dbaf0b3d500721e29a0e31e181c4c22"
+    },
+    {
+      "path": "templates/project/CHANGELOG.md",
+      "hash": "sha256:b04c9d80d4fc71794fc98dfdeac31bbab4a1fad910d2c93ff08fe2e6f32fb391"
+    },
+    {
+      "path": "templates/project/ENVIRONMENT.md",
+      "hash": "sha256:da15ec7ac9be2feb0081ec4ad09fdf9a46f95002346798ad8de1895062e62e4a"
+    },
+    {
+      "path": "templates/project/README.md",
+      "hash": "sha256:721b7e5739f71c77e56dafe2d6e03c2256d5cd95a999c5826765c0c18d52c3be"
+    },
+    {
+      "path": "templates/project/gitignore",
+      "hash": "sha256:bec9c442cbb12c98bc959a0af574175bf6ec85711d3af81d7b8bc22d029a7f67"
+    },
+    {
+      "path": "templates/project/pyproject.toml",
+      "hash": "sha256:72504eca32a4bd0d0b9e79be9ec3281b14f2dbf0c52e7a55b163aebe5daf23b9"
+    }
+  ]
+}

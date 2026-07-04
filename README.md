@@ -30,12 +30,12 @@ cm = magma(256);
 
 **View all colormaps:**
 ```matlab
-run examples/show_gallery.m
+scm.show_gallery
 ```
 
 **Preview a specific colormap:**
 ```matlab
-run examples/show_cm('viridis')
+scm.show_cm('viridis')
 ```
 
 Browse individual colormap previews in [`docs/colormap_previews/`](docs/colormap_previews/)
@@ -137,11 +137,12 @@ colormap(davos(512))    % 512 colors
 ## 📖 Documentation
 
 - **[Changelog](CHANGELOG.md)** — Version history and updates
-- **[Examples](examples/)** — Demo scripts and utility functions
-  - `show_gallery.m` — Display all available colormaps
-  - `show_cm.m` — Display a specific colormap
-
+- **[Tools](src/+scm/)** — the MATLAB `scm` package
+  - `scm.show_gallery` — Display all available colormaps
+  - `scm.show_cm(name)` — Display a specific colormap
+- **[Example](examples/basic_usage.m)** — Runnable usage demo
 - **[Colormap Previews](docs/colormap_previews/)** — Individual colormap images
+- **[AGENTS.md](AGENTS.md)** — Project entry point for contributors and agents
 
 **Enjoy better scientific visualization! 🎨📊**
 

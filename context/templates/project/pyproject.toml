@@ -1,0 +1,41 @@
+# Python package manifest, PEP 621, src-layout (where-files-live: Package > Python).
+# Fill every <placeholder>. Cross-refs to the canon are in comments.
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "<pkg>"
+version = "0.1.0"                  # SemVer; bump per CHANGELOG (naming-and-formatting reference)
+description = "<one-line purpose>"
+readme = "README.md"
+requires-python = ">=<3.11>"
+license = { text = "<MIT>" }
+authors = [{ name = "<name>", email = "<email>" }]
+dependencies = [
+  # "<dep> >= <x.y>",             # pin lower bounds: trust = pinned authority (validation-model)
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff",
+  "mypy",                         # public modules type-checked (working-with-code gate)
+]
+
+[project.scripts]
+# <cli-name> = "<pkg>.__main__:main"   # optional CLI entry
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/<pkg>"]
+
+[tool.pytest.ini_options]
+# collect every test prefix (where-files-live: tests)
+python_files = ["test_*.py", "validation_*.py", "smoke_*.py"]
+testpaths = ["tests"]
+
+[tool.mypy]
+# strict on the public surface (working-with-code gate)
+files = ["src/<pkg>"]
+strict = true
