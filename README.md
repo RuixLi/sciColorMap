@@ -161,7 +161,7 @@ rgb = scm.load("batlow", 64)              # 64x3 numpy array
 scm.list_cm()                             # available names
 ```
 
-Requires `numpy` (and `matplotlib` for `scm.cmap`). Regenerate the CSVs after editing a colormap by running `scm.export_data` in MATLAB.
+Requires `numpy` (and `matplotlib` for `scm.cmap`). Regenerate the CSVs after editing a colormap by running `scm.export_cm` in MATLAB.
 
 ---
 

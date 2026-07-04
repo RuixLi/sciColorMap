@@ -17,7 +17,7 @@ verifyNotEmpty(tc, names);
 for i = 1:numel(names)
     csv = fullfile(cmdir, [names{i} '.csv']);
     verifyTrue(tc, isfile(csv), ...
-        sprintf('missing %s.csv - run scm.export_data', names{i}));
+        sprintf('missing %s.csv - run scm.export_cm', names{i}));
     M = feval(names{i}, 256);
     C = readmatrix(csv);
     verifyEqual(tc, C, M, 'AbsTol', 1e-6, ...

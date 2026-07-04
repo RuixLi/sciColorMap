@@ -15,7 +15,7 @@ updated: "2026-07-04T14:15"
 ## Related files
 
 - [effort](../efforts/python-access.md) · [plan](../plans/20260704-python-access.md)
-- Code: `src/+scm/export_data.m` (exporter), `src/scm.py` (loader), `colormaps/*.csv` (67 exported tables).
+- Code: `src/+scm/export_cm.m` (exporter), `src/scm.py` (loader), `colormaps/*.csv` (67 exported tables).
 - Tests (oracle): `tests/test_export_data.m`, `tests/test_scicolormap.py`.
 
 ## Next action(s)

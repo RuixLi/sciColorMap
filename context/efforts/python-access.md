@@ -14,13 +14,13 @@ Make the colormap catalog usable from Python (matplotlib / seaborn) by exporting
 
 ## Outcome
 
-- Every catalog map has a committed `colormaps/<name>.csv` (256×3 RGB) produced from its `.m` by `scm.export_data`.
+- Every catalog map has a committed `colormaps/<name>.csv` (256×3 RGB) produced from its `.m` by `scm.export_cm`.
 - `src/scm.py` provides `load`, `cmap`, and `list_cm`; a user can do `import scm; sns.heatmap(d, cmap=scm.cmap('vik'))` with no registration.
 - The oracle passes: the CSVs match the MATLAB functions (drift test) and the Python loader behaves (loader test).
 
 ## Assumptions
 
-- **The `.m` colormap functions accept an optional N and return N×3 in [0,1]** (e.g. `viridis(256)`) - if wrong: `export_data` must special-case that map.
+- **The `.m` colormap functions accept an optional N and return N×3 in [0,1]** (e.g. `viridis(256)`) - if wrong: `export_cm` must special-case that map.
 - **Python 3 with numpy + matplotlib** is available to run/use the snippet - if wrong: the snippet can't run; the CSV data is still usable by any tool.
 - **256 rows is a faithful canonical resolution** for these maps - if wrong (a map with a much larger native table): `load(name, n≠256)` differs sub-perceptually from MATLAB `feval(name, n)`.
 
@@ -37,7 +37,7 @@ Make the colormap catalog usable from Python (matplotlib / seaborn) by exporting
 - **Per-map CSV, 256×3, stored in `colormaps/`** next to the `.m` files - `colormaps/` becomes the shared catalog/asset layer ([ADR 0001](decisions/0001-catalog-at-root-and-cross-language-layout.md)). Tracked as text.
 - **Python code is a single module `src/scm.py`** imported as `import scm` → `scm.load` / `scm.cmap` / `scm.list_cm` (parallels the MATLAB `scm.*` namespace). Not a package.
 - **The names function is `list_cm()`, not `list`** - avoids shadowing the Python builtin `list`.
-- **Extraction via MATLAB** `scm.export_data` (`feval(name,256)` → `writematrix`), not by parsing `.m` source - robust, uses each map's own logic.
+- **Extraction via MATLAB** `scm.export_cm` (`feval(name,256)` → `writematrix`), not by parsing `.m` source - robust, uses each map's own logic.
 - **MATLAB `.m` files are read-only** here; MATLAB tools glob `*.m`, so the new `.csv` do not affect them.
 
 ## Oracle(s)
@@ -50,12 +50,12 @@ Make the colormap catalog usable from Python (matplotlib / seaborn) by exporting
 
 ## Scope
 
-- **In:** `scm.export_data` (MATLAB exporter); the 67 `colormaps/*.csv`; `src/scm.py` loader; the two tests; README "Use in Python" section; `ENVIRONMENT.md` + `CHANGELOG.md` updates.
+- **In:** `scm.export_cm` (MATLAB exporter); the 67 `colormaps/*.csv`; `src/scm.py` loader; the two tests; README "Use in Python" section; `ENVIRONMENT.md` + `CHANGELOG.md` updates.
 - **Out:** a pip/PyPI package, conda, auto-registration on import, a gap analysis against existing Python packages, native-resolution (non-256) storage. **Untouchable:** the 67 `colormaps/*.m` (read-only) and the existing `+scm` MATLAB tools.
 
 ## Design
 
-- **Export** - `scm.export_data` loops `colormaps/*.m`; for each, `M = feval(name, 256)`; `writematrix(M, colormaps/<name>.csv)`. Re-run whenever a `.m` changes.
+- **Export** - `scm.export_cm` loops `colormaps/*.m`; for each, `M = feval(name, 256)`; `writematrix(M, colormaps/<name>.csv)`. Re-run whenever a `.m` changes.
 - **Storage** - one `colormaps/<name>.csv` per map, a 256×3 table of floats in `[0,1]`; the shared, language-neutral source of truth.
 - **Load (Python)** - `src/scm.py` locates `../colormaps` relative to itself, reads `<name>.csv`, and linearly interpolates the 256-row base to the requested `n` (mirroring the `.m`). `cmap` wraps the array in `matplotlib.colors.ListedColormap`. No import side effects.
 
@@ -63,7 +63,7 @@ The internal file layout and the ordered, tests-first task route live in the pla
 
 ## Public interface
 
-- **`scm.export_data()`** (MATLAB) - regenerate `colormaps/*.csv` from `colormaps/*.m`.
+- **`scm.export_cm()`** (MATLAB) - regenerate `colormaps/*.csv` from `colormaps/*.m`.
 - **`scm.load(name, n=256)`** (Python) - return an `n×3` numpy array of RGB in `[0,1]`.
 - **`scm.cmap(name, n=256)`** (Python) - return a `matplotlib.colors.ListedColormap` for `cmap=`.
 - **`scm.list_cm()`** (Python) - return the sorted list of available colormap names.
