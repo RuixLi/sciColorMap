@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `tests/test_colormaps.m` — smoke test that every colormap returns a valid
   `N×3` RGB table in `[0,1]`.
 - `examples/basic_usage.m` — runnable usage demo.
+- `scm.trim`, `scm.warp`, and interactive `scm.cmapeditor` — trim a colormap to a sub-range and reshape its transition (see [effort](context/efforts/colormap-editor.md)).
 
 ### Removed
 - Stray `.DS_Store` from version control.

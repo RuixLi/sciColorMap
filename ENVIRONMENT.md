@@ -5,8 +5,9 @@ planned for Goal 2 — when it lands, its dependencies move to `pyproject.toml`)
 
 ## Toolchain
 
-- **MATLAB R2016b or newer** — runs the colormaps and the `scm` tools. No
-  additional toolboxes are required (base MATLAB only).
+- **MATLAB R2016b or newer** — runs the colormaps and the pure `scm` functions.
+  No additional toolboxes are required (base MATLAB only). The interactive
+  `scm.cmapeditor` GUI needs **R2020a+** (uifigure mouse callbacks).
 - *(planned)* **Python 3.11+** — for the Python colormap package (Goal 2).
 
 ## Dependencies

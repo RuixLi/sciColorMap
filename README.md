@@ -140,6 +140,7 @@ colormap(davos(512))    % 512 colors
 - **[Tools](src/+scm/)** — the MATLAB `scm` package
   - `scm.show_gallery` — Display all available colormaps
   - `scm.show_cm(name)` — Display a specific colormap
+  - `scm.cmapeditor(cmap)` — interactively trim + warp a colormap (`scm.trim` / `scm.warp` are the pure transforms)
 - **[Example](examples/basic_usage.m)** — Runnable usage demo
 - **[Colormap Previews](docs/colormap_previews/)** — Individual colormap images
 - **[AGENTS.md](AGENTS.md)** — Project entry point for contributors and agents
