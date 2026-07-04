@@ -1,6 +1,6 @@
-function newmap = cmapeditor(cmap)
-%CMAPEDITOR  Interactively trim and warp a colormap.
-%   NEWMAP = scm.cmapeditor(CMAP) opens an editor on the N-by-3 colormap CMAP.
+function newmap = cm_editor(cmap)
+%CM_EDITOR  Interactively trim and warp a colormap.
+%   NEWMAP = scm.cm_editor(CMAP) opens an editor on the N-by-3 colormap CMAP.
 %   Trim to a sub-range with the Low/High sliders and reshape the transition by
 %   dragging the warp curve (steep = sharp, flat = smooth). Click Done to return
 %   the edited N-by-3 matrix; Cancel or closing the window returns CMAP.
@@ -8,7 +8,7 @@ function newmap = cmapeditor(cmap)
 %   Requires uifigure window mouse callbacks (MATLAB R2020a+; R2022a+ best).
 %
 %   Example:
-%     newmap = scm.cmapeditor(viridis(256));
+%     newmap = scm.cm_editor(viridis(256));
     validateattributes(cmap, {'double','single'}, ...
         {'ncols',3,'>=',0,'<=',1,'nonempty'}, mfilename, 'cmap', 1);
     cmap = double(cmap);
@@ -17,12 +17,12 @@ function newmap = cmapeditor(cmap)
     st.orig = cmap; st.lo = 0; st.hi = 1;
     st.xy = [0 0; 1 1]; st.result = cmap; st.done = false; st.drag = 0;
 
-    f = uifigure('Name', 'scm.cmapeditor', 'Position', [100 100 480 620]);
+    f = uifigure('Name', 'scm.cm_editor', 'Position', [100 100 480 680]);
 
-    uilabel(f, 'Position', [20 588 200 18], 'Text', 'Original');
-    axO = uiaxes(f, 'Position', [20 560 440 26]);
-    uilabel(f, 'Position', [20 528 200 18], 'Text', 'Result');
-    axR = uiaxes(f, 'Position', [20 500 440 26]);
+    uilabel(f, 'Position', [20 640 200 18], 'Text', 'Original');
+    axO = uiaxes(f, 'Position', [20 586 440 50]);
+    uilabel(f, 'Position', [20 554 200 18], 'Text', 'Result');
+    axR = uiaxes(f, 'Position', [20 500 440 50]);
 
     uilabel(f, 'Position', [20 468 440 18], ...
         'Text', 'Warp curve  —  drag a point; click curve to add; right-click a point to remove');

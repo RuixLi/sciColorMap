@@ -1,10 +1,10 @@
 ---
 kind: effort
 name: colormap editor
-status: active
+status: done
 description: "Interactive MATLAB tool to trim and warp a colormap's gradient, plus the pure, testable transforms behind it."
 created: "2026-07-04T12:00"
-updated: "2026-07-04T12:00"
+updated: "2026-07-04T13:00"
 ---
 # colormap editor - effort
 
@@ -14,13 +14,13 @@ An interactive MATLAB tool that lets a user **trim** a colormap to a sub-range a
 
 ## Outcome
 
-- `scm.trim`, `scm.warp`, and `scm.cmapeditor` exist. `newmap = scm.cmapeditor(cmap)` opens a `uifigure`, lets the user trim to `[lo,hi]` and reshape the transition with a draggable monotone curve while a preview updates live, and returns the edited N×3 on **Done**.
+- `scm.trim`, `scm.warp`, and `scm.cm_editor` exist. `newmap = scm.cm_editor(cmap)` opens a `uifigure`, lets the user trim to `[lo,hi]` and reshape the transition with a draggable monotone curve while a preview updates live, and returns the edited N×3 on **Done**.
 - The pure transforms pass their known-answer tests (`tests/test_trim.m`, `tests/test_warp.m`).
 
 ## Assumptions
 
 - **Input is an N×3 RGB matrix in [0,1]** (e.g. `viridis(256)`) - if wrong: input validation errors; this tool is not for arbitrary data arrays.
-- **A graphical display is available** for `cmapeditor` - if wrong: the GUI cannot run, but `scm.trim` / `scm.warp` still work headless.
+- **A graphical display is available** for `cm_editor` - if wrong: the GUI cannot run, but `scm.trim` / `scm.warp` still work headless.
 - **Base MATLAB only, no toolboxes** - if wrong (e.g. we reach for IPT `drawpoint`): it breaks the `ENVIRONMENT.md` "base only" guarantee.
 
 ## Decisions
@@ -39,7 +39,7 @@ An interactive MATLAB tool that lets a user **trim** a colormap to a sub-range a
 - **Curve mechanics:** PCHIP through control points; endpoints fixed at (0,0)/(1,1); interior points clamped monotone; click the curve to add a point, right-click to remove; default = identity (no change).
 - **Dragging via base graphics callbacks** (`WindowButtonMotionFcn`), not IPT `drawpoint` - preserves base-MATLAB-only.
 - **Layout A (single column):** original/result preview strips, Low/High sliders, curve plot, Reset / Cancel / Done.
-- **Names:** `scm.trim`, `scm.warp` (renamed from `rescale` to avoid the base `rescale` overlap), `scm.cmapeditor`. (Flip any you dislike.)
+- **Names:** `scm.trim`, `scm.warp` (renamed from `rescale` to avoid the base `rescale` overlap), `scm.cm_editor`. (Flip any you dislike.)
 
 ## Oracle(s)
 
@@ -54,7 +54,7 @@ The GUI itself is checked by **manual smoke** only (interactive graphics cannot 
 
 ## Scope
 
-- **In:** the `trim` + `warp` pure functions; the `cmapeditor` uifigure; their tests; `Contents.m`, README, and CHANGELOG updates.
+- **In:** the `trim` + `warp` pure functions; the `cm_editor` uifigure; their tests; `Contents.m`, README, and CHANGELOG updates.
 - **Out:** reverse, resample, catalog dropdown, live-figure apply, clipboard/`.m` export, the Python port. **Untouchable:** the 67 `colormaps/*.m` files (read-only) and the existing `show_*` tools.
 
 ## Design
@@ -71,8 +71,8 @@ The internal file layout and the ordered, tests-first task route live in the pla
 
 - **`scm.trim(cmap, lo, hi)`** - return the `[lo,hi]` sub-range re-stretched to N rows.
 - **`scm.warp(cmap, xy)`** - return `cmap` reparametrized by the monotone curve through control points `xy` (K×2 in `[0,1]`).
-- **`scm.cmapeditor(cmap)`** - open the interactive editor; return the edited N×3 (or the original on cancel).
+- **`scm.cm_editor(cmap)`** - open the interactive editor; return the edited N×3 (or the original on cancel).
 
 ## Seal
 
-- Not yet sealed - pending implementation and the oracle passing. On pass, record the validated commit here (`validation-model`).
+- **Sealed 2026-07-04** on branch `colormap-editor`. Ground: `tests/test_trim` + `tests/test_warp` pass **10/10** (MATLAB R2025a), catalog `test_colormaps` 67/67, `cm_editor.m` lint-clean; interactive GUI smoke confirmed by ruixli (after a preview-strip height fix). Realized by [plan](../plans/20260704-colormap-editor.md); outcome in [report](../reports/20260704-colormap-editor.md).

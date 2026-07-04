@@ -40,9 +40,9 @@ the files it points to.
 
 ## Current work
 
-- **Active:** [colormap editor](context/efforts/colormap-editor.md) — interactive
-  trim + warp tool for MATLAB (design converged; implementation planning next).
-- **Later:** Python access to the catalog (deferred; the neutral colormap-data
+- None active. Last shipped: [colormap editor](context/efforts/colormap-editor.md) —
+  `scm.trim` / `scm.warp` / `scm.cm_editor` ([report](context/reports/20260704-colormap-editor.md)).
+- **Next:** Python access to the catalog (deferred; the neutral colormap-data
   representation is its first question — see [ADR 0001](context/decisions/0001-catalog-at-root-and-cross-language-layout.md)).
 
 > Single-threaded for now: the current-work line lives here, not in a

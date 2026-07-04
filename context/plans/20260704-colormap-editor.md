@@ -2,7 +2,7 @@
 kind: plan
 name: colormap editor
 status: proposed
-description: "Tests-first route to build scm.trim, scm.warp, and the scm.cmapeditor uifigure, realizing the colormap-editor effort's oracle."
+description: "Tests-first route to build scm.trim, scm.warp, and the scm.cm_editor uifigure, realizing the colormap-editor effort's oracle."
 created: "2026-07-04T12:30"
 updated: "2026-07-04T12:30"
 ---
@@ -13,7 +13,7 @@ updated: "2026-07-04T12:30"
 
 **Goal:** Ship an interactive MATLAB tool to trim and warp a colormap, built on two pure, tested transforms.
 
-**Architecture:** Two graphics-free functions `scm.trim(cmap,lo,hi)` and `scm.warp(cmap,xy)` (each N×3 → N×3), plus a thin `scm.cmapeditor(cmap)` `uifigure` that composes them behind sliders and a draggable warp curve, returning the edited N×3 on Done. The transforms carry the oracle (known-answer tests); the GUI is verified by manual smoke.
+**Architecture:** Two graphics-free functions `scm.trim(cmap,lo,hi)` and `scm.warp(cmap,xy)` (each N×3 → N×3), plus a thin `scm.cm_editor(cmap)` `uifigure` that composes them behind sliders and a draggable warp curve, returning the edited N×3 on Done. The transforms carry the oracle (known-answer tests); the GUI is verified by manual smoke.
 
 **Tech stack:** MATLAB. Pure functions target R2016b+ (`validateattributes`, `interp1`, `pchip`). The editor uses `uifigure` window mouse callbacks — R2020a+ (R2022a+ recommended).
 
@@ -45,7 +45,7 @@ updated: "2026-07-04T12:30"
 
 - Create `src/+scm/trim.m` — pure trim transform.
 - Create `src/+scm/warp.m` — pure monotone-curve warp transform.
-- Create `src/+scm/cmapeditor.m` — the `uifigure` editor composing the two.
+- Create `src/+scm/cm_editor.m` — the `uifigure` editor composing the two.
 - Create `tests/test_trim.m`, `tests/test_warp.m` — known-answer oracles.
 - Modify `src/+scm/Contents.m` — list the three new functions.
 - Modify `README.md`, `CHANGELOG.md`, `ENVIRONMENT.md` — usage, changelog, editor version note.
@@ -271,20 +271,20 @@ git commit -m "feat(scm): add pure warp transform (monotone curve) with tests"
 
 ---
 
-## Task 3: `scm.cmapeditor` (uifigure editor)
+## Task 3: `scm.cm_editor` (uifigure editor)
 
 GUIs are not unit-tested (the trust anchor is Tasks 1–2). This task writes the complete editor in one file; Task 4 is its manual smoke test.
 
 **Files:**
-- Create: `src/+scm/cmapeditor.m`
+- Create: `src/+scm/cm_editor.m`
 
 - [ ] **Step 1: Write the editor**
 
-`src/+scm/cmapeditor.m`:
+`src/+scm/cm_editor.m`:
 ```matlab
-function newmap = cmapeditor(cmap)
+function newmap = cm_editor(cmap)
 %CMAPEDITOR  Interactively trim and warp a colormap.
-%   NEWMAP = scm.cmapeditor(CMAP) opens an editor on the N-by-3 colormap CMAP.
+%   NEWMAP = scm.cm_editor(CMAP) opens an editor on the N-by-3 colormap CMAP.
 %   Trim to a sub-range with the Low/High sliders and reshape the transition by
 %   dragging the warp curve (steep = sharp, flat = smooth). Click Done to return
 %   the edited N-by-3 matrix; Cancel or closing the window returns CMAP.
@@ -292,7 +292,7 @@ function newmap = cmapeditor(cmap)
 %   Requires uifigure window mouse callbacks (MATLAB R2020a+; R2022a+ best).
 %
 %   Example:
-%     newmap = scm.cmapeditor(viridis(256));
+%     newmap = scm.cm_editor(viridis(256));
     validateattributes(cmap, {'double','single'}, ...
         {'ncols',3,'>=',0,'<=',1,'nonempty'}, mfilename, 'cmap', 1);
     cmap = double(cmap);
@@ -301,7 +301,7 @@ function newmap = cmapeditor(cmap)
     st.orig = cmap; st.lo = 0; st.hi = 1;
     st.xy = [0 0; 1 1]; st.result = cmap; st.done = false; st.drag = 0;
 
-    f = uifigure('Name', 'scm.cmapeditor', 'Position', [100 100 480 620]);
+    f = uifigure('Name', 'scm.cm_editor', 'Position', [100 100 480 620]);
 
     uilabel(f, 'Position', [20 588 200 18], 'Text', 'Original');
     axO = uiaxes(f, 'Position', [20 560 440 26]);
@@ -406,14 +406,14 @@ end
 
 - [ ] **Step 2: Sanity-check it loads (headless)**
 
-Run: `addpath(genpath(pwd)); which scm.cmapeditor`
-Expected: prints the path to `cmapeditor.m` (no parse errors).
+Run: `addpath(genpath(pwd)); which scm.cm_editor`
+Expected: prints the path to `cm_editor.m` (no parse errors).
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add "src/+scm/cmapeditor.m"
-git commit -m "feat(scm): add interactive cmapeditor uifigure (trim + warp)"
+git add "src/+scm/cm_editor.m"
+git commit -m "feat(scm): add interactive cm_editor uifigure (trim + warp)"
 ```
 
 ---
@@ -427,7 +427,7 @@ Interactive graphics cannot be unit-tested; verify by hand and fix issues found.
 Run (MATLAB, repo root):
 ```matlab
 addpath(genpath(pwd))
-newmap = scm.cmapeditor(viridis(256));
+newmap = scm.cm_editor(viridis(256));
 ```
 Verify each:
 - Window opens; **Original** and **Result** strips show viridis.
@@ -441,8 +441,8 @@ Verify each:
 
 If the drag/CurrentPoint behavior misbehaves on your MATLAB version, apply the decision-A/B fallback (classic `figure`) or minor callback fixes, then:
 ```bash
-git add "src/+scm/cmapeditor.m"
-git commit -m "fix(scm): cmapeditor interaction fixes from smoke test"
+git add "src/+scm/cm_editor.m"
+git commit -m "fix(scm): cm_editor interaction fixes from smoke test"
 ```
 (Skip the commit if no changes were needed.)
 
@@ -460,17 +460,17 @@ Add under a new `Edit` block in `src/+scm/Contents.m`:
 % Edit
 %   trim         - Restrict a colormap to a [lo,hi] sub-range (pure)
 %   warp         - Reparametrize a colormap by a monotone curve (pure)
-%   cmapeditor   - Interactively trim + warp a colormap (returns the edited N-by-3)
+%   cm_editor   - Interactively trim + warp a colormap (returns the edited N-by-3)
 ```
 
 - [ ] **Step 2: Update README, CHANGELOG, ENVIRONMENT**
 
 - `README.md` Documentation/Tools list — add:
-  `- \`scm.cmapeditor(cmap)\` — interactively trim + warp a colormap; \`scm.trim\` / \`scm.warp\` are the pure transforms.`
+  `- \`scm.cm_editor(cmap)\` — interactively trim + warp a colormap; \`scm.trim\` / \`scm.warp\` are the pure transforms.`
 - `CHANGELOG.md` under `## [Unreleased]` → `### Added`:
-  `- \`scm.trim\`, \`scm.warp\`, and interactive \`scm.cmapeditor\` — trim a colormap to a sub-range and reshape its transition.`
+  `- \`scm.trim\`, \`scm.warp\`, and interactive \`scm.cm_editor\` — trim a colormap to a sub-range and reshape its transition.`
 - `ENVIRONMENT.md` Toolchain — append to the MATLAB line:
-  `(the \`scm.cmapeditor\` GUI needs R2020a+; the colormaps and pure transforms run on R2016b+).`
+  `(the \`scm.cm_editor\` GUI needs R2020a+; the colormaps and pure transforms run on R2016b+).`
 
 - [ ] **Step 3: Run the whole suite**
 
@@ -490,5 +490,5 @@ git commit -m "docs(scm): document colormap editor; seal effort"
 ## Done when
 
 - `runtests('tests')` is green (the oracle passes).
-- `scm.cmapeditor(viridis(256))` runs, edits, and returns an N×3 (manual smoke).
+- `scm.cm_editor(viridis(256))` runs, edits, and returns an N×3 (manual smoke).
 - Docs updated; effort sealed.

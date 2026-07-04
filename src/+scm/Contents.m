@@ -7,7 +7,7 @@
 % Edit
 %   trim         - Restrict a colormap to a [lo,hi] sub-range (pure)
 %   warp         - Reparametrize a colormap by a monotone curve (pure)
-%   cmapeditor   - Interactively trim + warp a colormap (returns the edited N-by-3)
+%   cm_editor   - Interactively trim + warp a colormap (returns the edited N-by-3)
 %
 % The colormaps themselves are NOT in this package: they live in the
 % repository's colormaps/ folder and are used directly as drop-in
