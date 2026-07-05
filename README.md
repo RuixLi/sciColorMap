@@ -114,6 +114,17 @@ colormap(hawaii(128))   % 128 colors
 colormap(davos(512))    % 512 colors
 ```
 
+### Customize a colormap
+
+```matlab
+% Interactive editor — trim the ends and reshape the transition; returns the edited N×3
+newmap = scm.cm_editor(viridis(256));
+
+% ...or the pure transforms directly:
+m1 = scm.trim(viridis(256), 0.1, 0.9);              % keep the middle 80%
+m2 = scm.warp(viridis(256), [0 0; 0.5 0.25; 1 1]);  % more resolution in the low half
+```
+
 ---
 
 ## 🎯 Choosing the Right Colormap
@@ -137,10 +148,13 @@ colormap(davos(512))    % 512 colors
 ## 📖 Documentation
 
 - **[Changelog](CHANGELOG.md)** — Version history and updates
-- **[Tools](src/+scm/)** — the MATLAB `scm` package
-  - `scm.show_gallery` — Display all available colormaps
-  - `scm.show_cm(name)` — Display a specific colormap
-  - `scm.cm_editor(cmap)` — interactively trim + warp a colormap (`scm.trim` / `scm.warp` are the pure transforms)
+- **[Tools](src/+scm/)** — the MATLAB `scm` package (run `help scm` for this list)
+  - `scm.show_gallery` — preview all colormaps as a grid
+  - `scm.show_cm(name)` — preview one colormap
+  - `newmap = scm.cm_editor(cmap)` — interactively trim + warp a colormap
+  - `scm.trim(cmap, lo, hi)` — restrict to a `[lo,hi]` sub-range (pure, returns N×3)
+  - `scm.warp(cmap, xy)` — reshape the gradient by a monotone curve (pure, returns N×3)
+  - `scm.export_cm` — regenerate `colormaps/*.csv` (the data the Python loader reads)
 - **[Example](examples/basic_usage.m)** — Runnable usage demo
 - **[Colormap Previews](docs/colormap_previews/)** — Individual colormap images
 - **[AGENTS.md](AGENTS.md)** — Project entry point for contributors and agents

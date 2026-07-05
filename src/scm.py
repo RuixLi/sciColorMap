@@ -10,6 +10,8 @@ from pathlib import Path
 
 import numpy as np
 
+__all__ = ["load", "cmap", "list_cm"]
+
 # <root>/src/scm.py -> <root>/colormaps
 _DATA_DIR = Path(__file__).resolve().parent.parent / "colormaps"
 

@@ -6,13 +6,15 @@ the files it points to.
 
 ## Project
 
-- **What:** sciColorMap — a catalog of ~67 perceptually-uniform scientific
-  colormaps for MATLAB, usable as drop-in replacements (`colormap(viridis)`).
-- **Goal:** a maintained colormap package; currently expanding to Python access
-  and an interactive colormap customizer (trim, tune the gradient).
-- **Outputs:** the colormap catalog (`colormaps/`) + MATLAB tools (`src/+scm/`);
-  a Python package is planned.
-- **Primary language:** MATLAB (R2016b+). Python planned (Goal 2).
+- **What:** sciColorMap — a catalog of 67 perceptually-uniform scientific
+  colormaps, usable as drop-in MATLAB colormaps (`colormap(viridis)`) and from
+  Python (`scm.cmap("viridis")`).
+- **Goal:** a maintained colormap package: the catalog + MATLAB tools (preview,
+  interactive trim/warp editor) + read-only Python access.
+- **Outputs:** the catalog (`colormaps/*.m`, with exported `*.csv`), MATLAB tools
+  (`src/+scm/`), and the Python loader (`src/scm.py`).
+- **Primary language:** MATLAB (R2016b+; the `scm.cm_editor` GUI needs R2020a+).
+  Python 3.11+ (numpy / matplotlib) for the loader.
 - **Archetype:** `package`. Status: `dev`.
 
 ## How to work here
@@ -34,9 +36,10 @@ the files it points to.
   v0.1.0). The catalog is the package's data/asset layer, kept on the MATLAB
   path for drop-in use; namespacing would break every caller.
   [ADR 0001](context/decisions/0001-catalog-at-root-and-cross-language-layout.md)
-- **B — no `pyproject.toml` yet** (from `project-layout` v0.1.0). MATLAB-only
-  today; [ENVIRONMENT.md](ENVIRONMENT.md) is the manifest. `pyproject.toml`
-  arrives with the Python effort.
+- **B — no `pyproject.toml`** (from `project-layout` v0.1.0). Python access is a
+  data catalog (`colormaps/*.csv`) plus a single loader module (`src/scm.py`),
+  not a pip package — so there is no build manifest; [ENVIRONMENT.md](ENVIRONMENT.md)
+  lists the deps. See the [python-access effort](context/efforts/python-access.md).
 
 ## Current work
 
@@ -50,8 +53,9 @@ the files it points to.
 | --- | --- |
 | conceptual overview / usage | `README.md` |
 | the colormap catalog | `colormaps/` |
-| library tools (previews, customizer) | `src/+scm/` (`Contents.m`) |
-| runnable usage demo | `examples/basic_usage.m` |
+| MATLAB tools (`scm`) | `src/+scm/` — `help scm` (`Contents.m`): show_cm, show_gallery, cm_editor, trim, warp, export_cm |
+| Python loader | `src/scm.py` — `import scm` → `load` / `cmap` / `list_cm` |
+| runnable usage demos | `examples/basic_usage.m` (MATLAB), `examples/basic_usage.py` (Python) |
 | tests | `tests/` |
 | conventions (the guidance) | `context/conventions.md` |
 | glossary | `context/glossary.md` |
