@@ -1,19 +1,15 @@
 # Environment
 
-The pinned environment to run this repo. Language-agnostic (MATLAB today; Python
-planned for Goal 2 — when it lands, its dependencies move to `pyproject.toml`).
+The pinned environment to run this repo. 
 
 ## Toolchain
 
-- **MATLAB R2016b or newer** — runs the colormaps and the pure `scm` functions.
-  No additional toolboxes are required (base MATLAB only). The interactive
-  `scm.cm_editor` GUI needs **R2020a+** (uifigure mouse callbacks).
+- **MATLAB R2016b or newer** — runs the colormaps and the pure `scm` functions. No additional toolboxes are required (base MATLAB only). The interactive `scm.cm_editor` GUI needs **R2020a+** (uifigure mouse callbacks).
 - **Python 3.11+** with `numpy` + `matplotlib` — for the `src/scm.py` colormap loader.
 
 ## Dependencies
 
-- **MATLAB:** base only. The colormap functions and `src/+scm/` use core
-  plotting (`colormap`, `imagesc`, `interp1`, `subplot`).
+- **MATLAB:** base only.
 - **Python:** `numpy` (loader), `matplotlib` (`scm.cmap`), `pytest` (tests). Not yet pinned in a lockfile.
 
 ## Setup
@@ -34,6 +30,5 @@ planned for Goal 2 — when it lands, its dependencies move to `pyproject.toml`)
 
 ## Notes
 
-- The `colormaps/` catalog must be on the path for `colormap(<name>)` and for
-  `scm.show_gallery` / `tests/test_colormaps.m` (they load colormaps by name).
+- The `colormaps/` catalog must be on the path for `colormap(<name>)` and for `scm.show_gallery` / `tests/test_colormaps.m` (they load colormaps by name).
 - `scm` tools are called through the namespace: `scm.show_cm`, `scm.show_gallery`.

@@ -149,6 +149,7 @@ m2 = scm.warp(viridis(256), [0 0; 0.5 0.25; 1 1]);  % more resolution in the low
 
 - **[Changelog](CHANGELOG.md)** — Version history and updates
 - **[Tools](src/+scm/)** — the MATLAB `scm` package (run `help scm` for this list)
+  - `scm.list_cm` — list every colormap name (sorted string array)
   - `scm.show_gallery` — preview all colormaps as a grid
   - `scm.show_cm(name)` — preview one colormap
   - `newmap = scm.cm_editor(cmap)` — interactively trim + warp a colormap
