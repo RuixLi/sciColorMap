@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-07-05
+
 ### Changed
 
 - Adopted the **all-you-need-is-trust** framework (v0.1.0) as a `package`: added
@@ -66,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 
 ### Features
+
 - Drop-in replacement for MATLAB built-in colormaps
 - Support for standard colormap syntax: `colormap(name)` and `colormap name`
 - Support for custom resolution: `colormap(name(n))`
@@ -75,5 +78,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - Initial Release
 
 ### Added
+
 - Initial colormap collection
 - Basic documentation
