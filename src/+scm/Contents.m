@@ -1,5 +1,8 @@
 % SCM  sciColorMap tools (namespace: scm)
 %
+% Catalog
+%   list_cm      - List every colormap name in the catalog (sorted string array)
+%
 % Preview
 %   show_cm      - Preview a single colormap by name, e.g. scm.show_cm('viridis')
 %   show_gallery - Preview every colormap in the catalog as a grid
